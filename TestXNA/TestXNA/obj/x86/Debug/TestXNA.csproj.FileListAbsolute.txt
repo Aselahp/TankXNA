@@ -1,0 +1,23 @@
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\bin\x86\Debug\TestXNA.exe
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\bin\x86\Debug\TestXNA.pdb
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\obj\x86\Debug\TestXNA.csprojResolveAssemblyReference.cache
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\obj\x86\Debug\TestXNA.exe
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\obj\x86\Debug\TestXNA.pdb
+c:\users\asus\documents\visual studio 2013\Projects\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\6775664-beautiful-lake-wallpaper.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\6775664-beautiful-lake-wallpaper.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\TestXNA.exe
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\TestXNA.pdb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\obj\x86\Debug\TestXNA.csprojResolveAssemblyReference.cache
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\obj\x86\Debug\TestXNA.exe
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\obj\x86\Debug\TestXNA.pdb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\post-138925-1233469168.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\coins.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\stone.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\brick.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\blank.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\bullet.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\life.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\water.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank.xnb
