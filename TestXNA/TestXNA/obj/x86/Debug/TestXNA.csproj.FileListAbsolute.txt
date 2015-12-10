@@ -20,4 +20,7 @@ C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\blank.
 C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\bullet.xnb
 C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\life.xnb
 C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\water.xnb
-C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-east.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-north.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-south.xnb
+C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-west.xnb

@@ -21,6 +21,7 @@ namespace TestXNA
         public bool IsAlive;
         public Color Color;
         public int type;
+        public String Direction;
 
     }
     public class Game1 : Microsoft.Xna.Framework.Game
@@ -202,6 +203,7 @@ namespace TestXNA
                             PlayerData player = new PlayerData();
                             String str = null;
                             player.type = net.map[i][j].type;
+                            player.Direction=net.map[i][j].Direction;
                             player.Position = new Vector2((i * 45), ((j * 45)));
                             if (player.type == 1)
                             {
@@ -217,7 +219,17 @@ namespace TestXNA
                             }
                             else if (player.type == 4)
                             {
-                                str = "tank";
+                                
+                                 if(player.Direction.Equals("West")){
+                                str = "tank-west";}
+                                else if(player.Direction.Equals("South")){
+                                str = "tank-south";}
+                                else if(player.Direction.Equals("East")){
+                                str = "tank-east";}
+                                 else 
+                                 {
+                                     str = "tank-north";
+                                 }
                             }
                             else if (player.type == 5)
                             {

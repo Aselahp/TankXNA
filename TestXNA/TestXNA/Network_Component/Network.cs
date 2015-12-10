@@ -10,6 +10,8 @@ namespace TestXNA.Network_Component
 {
     public class Network
     {
+        String[] positions = new String[15];
+        String play = null;
         public Objects.Item[][] map = new Objects.Item[10][];
         public Network()
         {
@@ -194,7 +196,7 @@ namespace TestXNA.Network_Component
 
                 String[] parts = msg.Split(';');
                 String[] playerno = parts[0].Split(':');
-
+                play = playerno[1];
                 Console.WriteLine("Player Number Is: " + parts[0] + "\n");
                 //play = playerno[1];
                 String[] cor = parts[1].Split(',');
@@ -238,6 +240,139 @@ namespace TestXNA.Network_Component
                 Thread backgroundThread = new Thread(() => setTime(cor[0], cor[1], exp));
                 backgroundThread.Start();
                 Console.WriteLine("*******************************************************************\n");
+            }
+            else if (index.Equals('G') && !(msg.Equals("GAME_FINISHED")) && !(msg.Equals("GAME_NOT_STARTED_YET")) && !(msg.Equals("GAME_ALREADY_STARTED")))
+            {
+                try
+                {
+                    Console.WriteLine("*******************************************************************\n");
+                    Console.WriteLine("Global updates received.........\n");
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                        {
+                            if (map[i][j].type == 4)
+                            {
+                                map[i][j].settype(0);
+                            }
+                        }
+                    }
+                        new Thread(() =>
+                        {
+                            String[] parts = msg.Split(':');
+
+                            String[][] Updates = new String[parts.Length - 2][];
+                            for (int i = 1; i < parts.Length - 1; i++)
+                            {
+                                parts[i] = parts[i].Replace(';', ',');
+
+                            }
+                            for (int i = 0; i < parts.Length - 2; i++)
+                            {
+                                String[] cor = parts[i + 1].Split(',');
+                                Updates[i] = cor;
+                            }
+                            String dir = null;
+                            int pos = 0;
+                            for (int i = 0; i < Updates.Length; i++)
+                            {
+                                Console.WriteLine("Player: " + Updates[i][0]);
+                                positions[pos] = Updates[i][0];
+                                pos++;
+                                if (Updates[i][0].Equals(play))
+                                {
+                                   //Add your position in display
+                                }
+                                Console.WriteLine("X Coordinate--> " + Updates[i][1]);
+                                positions[pos] = Updates[i][1];
+                                pos++;
+                                Console.WriteLine("Y Coordinate--> " + Updates[i][2]);
+                                positions[pos] = Updates[i][2];
+                                pos++;
+
+
+                                if (Updates[i][3].Equals("0")) { dir = "North"; }
+                                else if (Updates[i][3].Equals("1")) { dir = "East"; }
+                                else if (Updates[i][3].Equals("2")) { dir = "South"; }
+                                else if (Updates[i][3].Equals("3")) { dir = "West"; }
+                                map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].setDirection(dir);
+                                Console.WriteLine("Direction: " + dir);
+                                Console.WriteLine("Whether Shot: " + Updates[i][4]);
+                                Console.WriteLine("Health: " + Updates[i][5]);
+                                Console.WriteLine("Coins: " + Updates[i][6]);
+                                Console.WriteLine("Point: " + Updates[i][7] + "\n");
+                                if (Updates[i][0].Equals(play))
+                                {
+                                    //Add ur details to gui
+
+                                    //fr.setInfo_textbox("PointsTextbox", Updates[i][7]);
+                                    //fr.setInfo_textbox("DirectionTextbox", dir);
+                                   // fr.setInfo_textbox("HealthTextbox", Updates[i][5]);
+                                   // fr.setInfo_textbox("CoinsTextbox", Updates[i][6]);
+                                   
+                                }
+                            }
+                            for (int i = 0; i < positions.Length - 1; i = i + 3)
+                            {
+                                if (positions[i]!=null)
+                               map[Int32.Parse(positions[i + 1])][Int32.Parse(positions[i + 2])].settype(4);
+                                //fr.settext(positions[i + 1], positions[i + 2], positions[i]);
+
+                            }
+                            parts[parts.Length - 1] = parts[parts.Length - 1].Replace(';', ',');
+                            String[] Cordinates = parts[parts.Length - 1].Split(',');
+                            String[] BrickX = new String[Cordinates.Length / 3];
+                            String[] BrickY = new String[Cordinates.Length / 3];
+                            String[] BricksDamage = new String[Cordinates.Length / 3];
+                            int a = 0; int b = 0; int c = 0;
+                            for (int i = 0; i < Cordinates.Length; i = i + 3)
+                            {
+                                BrickX[a] = Cordinates[i];
+                                a++;
+                            }
+                            for (int i = 1; i < Cordinates.Length; i = i + 3)
+                            {
+                                BrickY[b] = Cordinates[i];
+                                b++;
+                            }
+                            for (int i = 2; i < Cordinates.Length; i = i + 3)
+                            {
+                                BricksDamage[c] = Cordinates[i];
+                                c++;
+                            }
+                            for (int i = 0; i < BricksDamage.Length; i++)
+                            {
+                                if (BricksDamage[i].Equals("1"))
+                                {
+                                    //fr.settext(BrickX[i], BrickY[i], "Brick 75%");
+                                    map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
+
+                                }
+                                else if (BricksDamage[i].Equals("2"))
+                                {
+                                    //fr.settext(BrickX[i], BrickY[i], "Brick 50%");
+                                    map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
+
+                                }
+                                else if (BricksDamage[i].Equals("3"))
+                                {
+                                   // fr.settext(BrickX[i], BrickY[i], "Brick 25%");
+                                    map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
+
+                                }
+                                if (BricksDamage[i].Equals("4"))
+                                {
+                                    //fr.settext(BrickX[i], BrickY[i], "");
+                                    map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(0);
+
+                                }
+                            }
+                        }).Start();
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(" Error Message: " + error.StackTrace);
+                }
             }
 }
     }

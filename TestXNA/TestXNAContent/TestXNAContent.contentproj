@@ -93,8 +93,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tank.png">
-      <Name>tank</Name>
+    <Compile Include="tank-east.png">
+      <Name>tank-east</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tank-north.png">
+      <Name>tank-north</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tank-south.png">
+      <Name>tank-south</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tank-west.png">
+      <Name>tank-west</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -7,4 +7,7 @@ Content\blank.xnb
 Content\bullet.xnb
 Content\life.xnb
 Content\water.xnb
-Content\tank.xnb
+Content\tank-east.xnb
+Content\tank-north.xnb
+Content\tank-south.xnb
+Content\tank-west.xnb

@@ -83,13 +83,40 @@
       <Time>2015-12-08T20:27:01.7288948+05:30</Time>
     </Item>
     <Item>
-      <Source>tank.png</Source>
-      <Name>tank</Name>
+      <Source>tank-east.png</Source>
+      <Name>tank-east</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank.xnb</Output>
-      <Time>2015-12-09T08:36:46.0289039+05:30</Time>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-east.xnb</Output>
+      <Time>2015-12-09T20:52:02.4840068+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank-north.png</Source>
+      <Name>tank-north</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-north.xnb</Output>
+      <Time>2015-12-09T20:52:02.5120267+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank-south.png</Source>
+      <Name>tank-south</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-south.xnb</Output>
+      <Time>2015-12-09T20:52:02.5290385+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank-west.png</Source>
+      <Name>tank-west</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-west.xnb</Output>
+      <Time>2015-12-09T20:52:02.5600608+05:30</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

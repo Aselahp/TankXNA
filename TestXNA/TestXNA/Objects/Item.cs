@@ -12,8 +12,11 @@ namespace TestXNA.Objects
         private String X_cor;
         private String Y_cor;
         public int type;
+        public String Direction;
         //public Vector2 Position;
-        public Item() { }
+        public Item() {
+            this.Direction = "north";
+        }
 
         public void setX_cor(String cor)
         {
@@ -38,6 +41,14 @@ namespace TestXNA.Objects
         public int gettype()
         {
             return type;
+        }
+        public void setDirection(String dir)
+        {
+            this.Direction = dir;
+        }
+        public String getDirection()
+        {
+            return Direction;
         }
     }
     }
