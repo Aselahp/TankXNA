@@ -75,6 +75,8 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI_Component\CompleteSquare.cs" />
+    <Compile Include="AI_Component\Pathfinder.cs" />
     <Compile Include="Network_Component\Network.cs" />
     <Compile Include="Objects\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

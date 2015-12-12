@@ -11,8 +11,12 @@ namespace TestXNA.Network_Component
     public class Network
     {
         String[] positions = new String[15];
-        String play = null;
+        public String play = null;
         public Objects.Item[][] map = new Objects.Item[10][];
+        public String health=null;
+        public String coins=null;
+        public String points=null;
+        public String massage = null;
         public Network()
         {
             for (int i = 0; i < map.Length; i++)
@@ -66,11 +70,11 @@ namespace TestXNA.Network_Component
             }
             finally
             {
-               /* new Thread(() =>
+                new Thread(() =>
                 {
                     while (true)
                     {
-                        String massage = fr.GetMsg();
+                        
                         if (massage != null)
                         {
                             TcpClient conn1 = new TcpClient();
@@ -80,13 +84,14 @@ namespace TestXNA.Network_Component
 
                             byte[] Nbytes = encode.GetBytes(massage);
                             net1.Write(Nbytes, 0, Nbytes.Length);
-                            fr.SetMsg();
-                            if (massage.Equals("SHOOT#"))
-                            {
-                                fr.setInfo_textbox("StatusTextbox", "Shooting...");
-                                Thread backgroundThread = new Thread(() => setStatusbar(1500));
-                                backgroundThread.Start();
-                            }
+                            massage = null;
+                            
+                            //if (massage.Equals("SHOOT#"))
+                           // {
+                                //fr.setInfo_textbox("StatusTextbox", "Shooting...");
+                               // Thread backgroundThread = new Thread(() => setStatusbar(1500));
+                               // backgroundThread.Start();
+                           // }
                             if (net1 != null && conn1 != null)
                             {
                                 net1.Close();
@@ -96,7 +101,7 @@ namespace TestXNA.Network_Component
                         }
                     }
 
-                }).Start();*/
+                }).Start();
                 new Thread(() =>
                 {
                     if (net != null)
@@ -304,11 +309,14 @@ namespace TestXNA.Network_Component
                                 if (Updates[i][0].Equals(play))
                                 {
                                     //Add ur details to gui
-
+                                    map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].user = 1;
                                     //fr.setInfo_textbox("PointsTextbox", Updates[i][7]);
+                                    points = Updates[i][7];
                                     //fr.setInfo_textbox("DirectionTextbox", dir);
                                    // fr.setInfo_textbox("HealthTextbox", Updates[i][5]);
+                                    health = Updates[i][5];
                                    // fr.setInfo_textbox("CoinsTextbox", Updates[i][6]);
+                                    coins = Updates[i][6];
                                    
                                 }
                             }
@@ -360,9 +368,10 @@ namespace TestXNA.Network_Component
                                     map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
 
                                 }
-                                if (BricksDamage[i].Equals("4"))
+                                else if (BricksDamage[i].Equals("4"))
                                 {
                                     //fr.settext(BrickX[i], BrickY[i], "");
+                                    if (map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].type!=4)
                                     map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(0);
 
                                 }

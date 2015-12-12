@@ -14,8 +14,10 @@ namespace TestXNA.Objects
         public int type;
         public String Direction;
         //public Vector2 Position;
+        public int user;
         public Item() {
             this.Direction = "north";
+            this.user = 0;
         }
 
         public void setX_cor(String cor)

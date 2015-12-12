@@ -22,6 +22,8 @@ namespace TestXNA
         public Color Color;
         public int type;
         public String Direction;
+        public int user;
+        public double harm;
 
     }
     public class Game1 : Microsoft.Xna.Framework.Game
@@ -34,11 +36,18 @@ namespace TestXNA
         Texture2D back;
         int screenWidth;
         int screenHight;
-        PlayerData[] players;
-        int numberOfPlayers = 10;
         Texture2D carriageTexture;
+        Texture2D profilepic;
+        Texture2D logo;
          Network_Component.Network net;
-            
+         SpriteFont Font1;
+         SpriteFont logofont;
+         Vector2 FontPos;
+         public String health;
+         public String coins;
+         public String points;
+         Texture2D pixel;
+         KeyboardState oldState;
        
         GameTime gt;
 
@@ -46,8 +55,8 @@ namespace TestXNA
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 500;
-            graphics.PreferredBackBufferHeight = 500;
+            graphics.PreferredBackBufferWidth = 650;
+            graphics.PreferredBackBufferHeight = 454;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Window.Title = "Tank Game - Client";
@@ -68,6 +77,7 @@ namespace TestXNA
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            oldState = Keyboard.GetState();
         }
         
 
@@ -86,6 +96,7 @@ namespace TestXNA
              screenHight = graphics.PreferredBackBufferHeight;
              SetUpPlayers();*/
             // TODO: use this.Content to load your game content here
+            
         }
 
         /// <summary>
@@ -113,13 +124,22 @@ namespace TestXNA
             // TODO: Add your update logic here
             //String stri = "brick";
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            back = Content.Load<Texture2D>("post-138925-1233469168");
+            back = Content.Load<Texture2D>("background");
+            Font1 = Content.Load<SpriteFont>("textfont");
+            logofont = Content.Load<SpriteFont>("textfont");
+            FontPos = new Vector2(550,150);
+            profilepic = Content.Load<Texture2D>("profileicon");
+            logo = Content.Load<Texture2D>("gamelogo");
+            Vector2 pos = new Vector2(550, 45);
+            pixel = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            pixel.SetData(new[] { Color.White });
             //carriageTexture = Content.Load<Texture2D>(stri);
             screenWidth = graphics.PreferredBackBufferWidth;
             screenHight = graphics.PreferredBackBufferHeight;
             //DrawPlayers();
             //SetUpPlayers();
             Draw(gameTime);
+            UpdateInput();
             base.Update(gameTime);
         }
 
@@ -134,6 +154,24 @@ namespace TestXNA
             spriteBatch.Begin();
             DrawScenery();
             DrawPlayers();
+            string output = "Your Id: " + net.play + "\n" + "Coins   : " + net.coins + "\n" + "Health : " + net.health + "\n" + "Points  : " + net.points;
+            String logoname = "   Team iGamers" + "\n"  + "         CS 2212";
+            Vector2 logotextpos = new Vector2(510, 420);
+            // Find the center of the string
+            Vector2 FontOrigin = Font1.MeasureString(output) / 2;
+            // Draw the string
+            spriteBatch.DrawString(Font1, output, FontPos, Color.DarkRed,
+                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+            spriteBatch.DrawString(Font1, logoname, logotextpos, Color.DarkRed,
+                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+            Vector2 pos = new Vector2(510, 45);
+            spriteBatch.Draw(profilepic, pos, Color.White);
+            Vector2 logoposition = new Vector2(510, 300);
+            spriteBatch.Draw(logo, logoposition, Color.White);
+            Rectangle titleSafeRectangle = GraphicsDevice.Viewport.TitleSafeArea;
+
+            // Call our method (also defined in this blog-post)
+            DrawBorder(titleSafeRectangle, 4, Color.Silver);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
@@ -145,42 +183,105 @@ namespace TestXNA
             spriteBatch.Draw(back, screenRectangle, Color.White);
         }
 
-        private void SetUpPlayers()
-        {
-            Color[] playerColors = new Color[10];
-            playerColors[0] = Color.Red;
-            playerColors[1] = Color.Green;
-            playerColors[2] = Color.Blue;
-            playerColors[3] = Color.Purple;
-            playerColors[4] = Color.Orange;
-            playerColors[5] = Color.Indigo;
-            playerColors[6] = Color.Yellow;
-            playerColors[7] = Color.SaddleBrown;
-            playerColors[8] = Color.Tomato;
-            playerColors[9] = Color.Turquoise;
-
-            players = new PlayerData[numberOfPlayers];
-            for (int i = 0; i < numberOfPlayers; i++)
-            {
-                players[i].IsAlive = true;
-                players[i].Color = playerColors[i];
-
-            }
-
-            players[0].Position = new Vector2(100, 0);
-
-            players[1].Position = new Vector2(140, 0);
-
-            players[2].Position = new Vector2(180, 0);
-            players[3].Position = new Vector2(220, 0);
-            players[4].Position = new Vector2(260, 0);
-            players[5].Position = new Vector2(300, 0);
-            players[6].Position = new Vector2(300, 40);
-
-        }
+        
         public void set(){
             Update(gt);
         }
+        private void DrawBorder(Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor)
+        {
+            // Draw top line
+            spriteBatch.Draw(pixel, new Rectangle(480, 35,150, thicknessOfBorder), borderColor);
+
+            // Draw left line
+            spriteBatch.Draw(pixel, new Rectangle(480, 35, thicknessOfBorder, 170), borderColor);
+
+            spriteBatch.Draw(pixel, new Rectangle(480, 205, 150, thicknessOfBorder), borderColor);
+
+            // Draw left line
+            spriteBatch.Draw(pixel, new Rectangle(630, 35, thicknessOfBorder, 174), borderColor);
+
+            // Draw right line
+           /* spriteBatch.Draw(pixel, new Rectangle((rectangleToDraw.X + rectangleToDraw.Width - thicknessOfBorder),
+                                            rectangleToDraw.Y,
+                                            thicknessOfBorder,
+                                            rectangleToDraw.Height), borderColor);
+            // Draw bottom line
+            spriteBatch.Draw(pixel, new Rectangle(480,
+                                            rectangleToDraw.Y + rectangleToDraw.Height - thicknessOfBorder,
+                                            rectangleToDraw.Width,
+                                            thicknessOfBorder), borderColor);*/
+
+        }
+        private void DrawprofileBorder(Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor)
+        {
+            // Draw top line
+            spriteBatch.Draw(pixel, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, rectangleToDraw.Width, thicknessOfBorder), borderColor);
+
+            // Draw left line
+            spriteBatch.Draw(pixel, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, thicknessOfBorder, rectangleToDraw.Height), borderColor);
+
+            // Draw right line
+            spriteBatch.Draw(pixel, new Rectangle((rectangleToDraw.X + rectangleToDraw.Width - thicknessOfBorder),
+                                            rectangleToDraw.Y,
+                                            thicknessOfBorder,
+                                            rectangleToDraw.Height), borderColor);
+            // Draw bottom line
+            spriteBatch.Draw(pixel, new Rectangle(rectangleToDraw.X,
+                                            rectangleToDraw.Y + rectangleToDraw.Height - thicknessOfBorder,
+                                            rectangleToDraw.Width,
+                                            thicknessOfBorder), borderColor);
+        }
+
+        private void UpdateInput()
+        {
+            KeyboardState newState = Keyboard.GetState();
+
+            // Is the SPACE key down?
+            if (newState.IsKeyDown(Keys.Right))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Right))
+                {
+                    net.massage = "RIGHT#";
+                }
+            }
+            else if (newState.IsKeyDown(Keys.Left))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Left))
+                {
+                    net.massage = "LEFT#";
+                }
+            }
+            else if (newState.IsKeyDown(Keys.Up))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Up))
+                {
+                    net.massage = "UP#";
+                }
+            }
+            else if (newState.IsKeyDown(Keys.Down))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Down))
+                {
+                    net.massage = "DOWN#";
+                }
+            }
+            else if (newState.IsKeyDown(Keys.Space))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Space))
+                {
+                    net.massage = "SHOOT#";
+                }
+            }
+          
+            // Update saved state.
+            oldState = newState;
+        }
+
         private void DrawPlayers()
         {
             /* foreach (PlayerData player in players)
@@ -203,8 +304,9 @@ namespace TestXNA
                             PlayerData player = new PlayerData();
                             String str = null;
                             player.type = net.map[i][j].type;
+                            player.user=net.map[i][j].user;
                             player.Direction=net.map[i][j].Direction;
-                            player.Position = new Vector2((i * 45), ((j * 45)));
+                            player.Position = new Vector2((i * 45)+4, ((j * 45)+5));
                             if (player.type == 1)
                             {
                                 str = "brick";
@@ -219,17 +321,45 @@ namespace TestXNA
                             }
                             else if (player.type == 4)
                             {
-                                
-                                 if(player.Direction.Equals("West")){
-                                str = "tank-west";}
-                                else if(player.Direction.Equals("South")){
-                                str = "tank-south";}
-                                else if(player.Direction.Equals("East")){
-                                str = "tank-east";}
-                                 else 
-                                 {
-                                     str = "tank-north";
-                                 }
+                                if (player.user == 1)
+                                {
+                                    if (player.Direction.Equals("West"))
+                                    {
+                                        str = "tank_left";
+                                    }
+                                    else if (player.Direction.Equals("South"))
+                                    {
+                                        str = "tank_down";
+                                    }
+                                    else if (player.Direction.Equals("East"))
+                                    {
+                                        str = "tank_right";
+                                    }
+                                    else
+                                    {
+                                        str = "tank_up";
+                                    }
+                                }
+                                if (player.user == 0)
+                                {
+                                    if (player.Direction.Equals("West"))
+                                    {
+                                        str = "enemy_left";
+                                    }
+                                    else if (player.Direction.Equals("South"))
+                                    {
+                                        str = "enemy_down";
+                                    }
+                                    else if (player.Direction.Equals("East"))
+                                    {
+                                        str = "enemy_right";
+                                    }
+                                    else
+                                    {
+                                        str = "enemy_up";
+                                    }
+                                }
+
                             }
                             else if (player.type == 5)
                             {
@@ -241,6 +371,7 @@ namespace TestXNA
                             }
                             carriageTexture = Content.Load<Texture2D>(str);
                             spriteBatch.Draw(carriageTexture, player.Position, Color.White);
+                            
 
                         }
                         else
@@ -248,7 +379,7 @@ namespace TestXNA
                             PlayerData player = new PlayerData();
                             //String str = null;
                             player.type = net.map[i][j].type;
-                            player.Position = new Vector2((i * 45), ((j * 45)));
+                            player.Position = new Vector2((i * 45)+4, ((j * 45)+5));
                             carriageTexture = Content.Load<Texture2D>("blank");
                             try
                             {

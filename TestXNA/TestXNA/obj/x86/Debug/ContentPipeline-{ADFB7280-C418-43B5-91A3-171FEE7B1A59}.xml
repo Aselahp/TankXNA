@@ -47,15 +47,6 @@
       <Time>2015-12-07T19:58:59.36014+05:30</Time>
     </Item>
     <Item>
-      <Source>blank.png</Source>
-      <Name>blank</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\blank.xnb</Output>
-      <Time>2015-12-07T19:59:24.427972+05:30</Time>
-    </Item>
-    <Item>
       <Source>bullet.png</Source>
       <Name>bullet</Name>
       <Importer>TextureImporter</Importer>
@@ -83,40 +74,121 @@
       <Time>2015-12-08T20:27:01.7288948+05:30</Time>
     </Item>
     <Item>
-      <Source>tank-east.png</Source>
-      <Name>tank-east</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Source>textfont.spritefont</Source>
+      <Name>textfont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-east.xnb</Output>
-      <Time>2015-12-09T20:52:02.4840068+05:30</Time>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\textfont.xnb</Output>
+      <Time>2015-12-10T08:22:25.1663042+05:30</Time>
     </Item>
     <Item>
-      <Source>tank-north.png</Source>
-      <Name>tank-north</Name>
+      <Source>profileicon.png</Source>
+      <Name>profileicon</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-north.xnb</Output>
-      <Time>2015-12-09T20:52:02.5120267+05:30</Time>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\profileicon.xnb</Output>
+      <Time>2015-12-10T08:43:54.4034065+05:30</Time>
     </Item>
     <Item>
-      <Source>tank-south.png</Source>
-      <Name>tank-south</Name>
+      <Source>enemy_down.jpg</Source>
+      <Name>enemy_down</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-south.xnb</Output>
-      <Time>2015-12-09T20:52:02.5290385+05:30</Time>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\enemy_down.xnb</Output>
+      <Time>2015-12-10T21:40:23.2606419+05:30</Time>
     </Item>
     <Item>
-      <Source>tank-west.png</Source>
-      <Name>tank-west</Name>
+      <Source>enemy_left.jpg</Source>
+      <Name>enemy_left</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank-west.xnb</Output>
-      <Time>2015-12-09T20:52:02.5600608+05:30</Time>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\enemy_left.xnb</Output>
+      <Time>2015-12-10T21:40:23.2926641+05:30</Time>
+    </Item>
+    <Item>
+      <Source>enemy_right.jpg</Source>
+      <Name>enemy_right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\enemy_right.xnb</Output>
+      <Time>2015-12-10T21:40:23.3116774+05:30</Time>
+    </Item>
+    <Item>
+      <Source>enemy_up.jpg</Source>
+      <Name>enemy_up</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\enemy_up.xnb</Output>
+      <Time>2015-12-10T21:40:23.3296901+05:30</Time>
+    </Item>
+    <Item>
+      <Source>background.jpg</Source>
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2015-12-10T21:59:12.7104555+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank_right.png</Source>
+      <Name>tank_right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank_right.xnb</Output>
+      <Time>2015-12-11T17:03:04.7269761+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank_down.png</Source>
+      <Name>tank_down</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank_down.xnb</Output>
+      <Time>2015-12-11T17:03:04.7660035+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank_left.png</Source>
+      <Name>tank_left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank_left.xnb</Output>
+      <Time>2015-12-11T17:03:04.7810148+05:30</Time>
+    </Item>
+    <Item>
+      <Source>tank_up.png</Source>
+      <Name>tank_up</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\tank_up.xnb</Output>
+      <Time>2015-12-11T17:03:04.7529945+05:30</Time>
+    </Item>
+    <Item>
+      <Source>blank.png</Source>
+      <Name>blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\blank.xnb</Output>
+      <Time>2015-12-11T17:09:52.4560683+05:30</Time>
+    </Item>
+    <Item>
+      <Source>gamelogo.png</Source>
+      <Name>gamelogo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\H.P. Asela\Desktop\TestXNA\TestXNA\TestXNA\bin\x86\Debug\Content\gamelogo.xnb</Output>
+      <Time>2015-12-12T10:27:09.3056008+05:30</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
