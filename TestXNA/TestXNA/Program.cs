@@ -10,16 +10,15 @@ namespace TestXNA
         /// </summary>
         public static void Main(string[] args)
         {
-            /*using (Game1 game = new Game1())
-            {
-                game.Run();
-            }*/
+            
            
             using (Game1 game = new Game1())
             {
                
                 game.Run();
             }
+
+            
 
         }
     }
