@@ -190,13 +190,18 @@ namespace TestXNA.PathFinding
                 
             }
             massage = "RIGHT#";
-            Thread.Sleep(2000);
+           // Console.Write(massage);
+            Thread.Sleep(200);
             
             for (int i = Xcor.Length-2; i >=0; i--)
             {
-                Thread.Sleep(2000);
-                if (playerXcor == Xcor[i]) { massage = "RIGHT#"; }        
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
+                //if (playerXcor == Xcor[i] && playerYcor == (Ycor[i]-1)) { massage = "RIGHT#"; }
+                //else if (playerXcor == Xcor[i] && playerYcor == (Ycor[i] + 1)) { massage = "LEFT#"; }
+                //else if (playerXcor == (Xcor[i]+1)) { massage = "UP#"; }
+                //else if (playerXcor == (Xcor[i]-1)) { massage = "DOWN#"; }
+                Console.Write(massage);
+                Thread.Sleep(100);
                 Console.Write("(" + Xcor[i] + "," + Ycor[i] + ")");
                 playerXcor = Xcor[i];
                 playerYcor = Ycor[i];
