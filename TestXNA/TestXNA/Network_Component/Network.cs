@@ -18,6 +18,7 @@ namespace TestXNA.Network_Component
         public String points=null;
         public String massage = null;
         
+        
         public PathFinding.Pathfinder AI;
        
         public Network()
@@ -220,19 +221,27 @@ namespace TestXNA.Network_Component
                 else if (parts[2].Equals("1")) { dir = "East"; }
                 else if (parts[2].Equals("2")) { dir = "South"; }
                 else if (parts[2].Equals("3")) { dir = "West"; }
+                map[Int32.Parse(cor[0])][Int32.Parse(cor[1])].setDirection(dir);
+               // AI.Direction = dir;
                 //Console.WriteLine("Your Direction Is: " + dir + "\n");
                 //Console.WriteLine("*******************************************************************\n");
-                
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        AI.AImap[i][j] = map[i][j];
+                    }
+                }
                 new Thread(() =>
                 {
-                        for (int i = 0; i < 10; i++)
-                        {
-                            for (int j = 0; j < 10; j++)
-                            {
-                                AI.AImap[i][j] = map[i][j];
-                            }
+                   while (true)
+                    {
+                        if (AI.locke == false) {
+                            
+                                AI.set();
                         }
-                        AI.set();
+                    }
+                        
                     
                 }).Start();}
             
@@ -247,6 +256,8 @@ namespace TestXNA.Network_Component
                 //Console.WriteLine("Value Of The Coins: " + parts[3] + "\n");
                 String val = "Coins: " + parts[3];
                 map[Int32.Parse(cor[0])][Int32.Parse(cor[1])].settype(5);
+                map[Int32.Parse(cor[0])][Int32.Parse(cor[1])].setX_cor(cor[0]);
+                map[Int32.Parse(cor[0])][Int32.Parse(cor[1])].setY_cor(cor[1]);
                 int exp = Int32.Parse(parts[2]);
                 Thread backgroundThread = new Thread(() => setTime(cor[0], cor[1], exp));
                 backgroundThread.Start();
@@ -322,6 +333,7 @@ namespace TestXNA.Network_Component
                             else if (Updates[i][3].Equals("2")) { dir = "South"; }
                             else if (Updates[i][3].Equals("3")) { dir = "West"; }
                             map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].setDirection(dir);
+                            map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].Resetuser();
                             //Console.WriteLine("Direction: " + dir);
                             //Console.WriteLine("Whether Shot: " + Updates[i][4]);
                             //Console.WriteLine("Health: " + Updates[i][5]);
@@ -331,6 +343,8 @@ namespace TestXNA.Network_Component
                             {
                                 //Add ur details to gui
                                 map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].user = 1;
+                                map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].setX_cor(Updates[i][1]);
+                                map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].setY_cor(Updates[i][2]);
                                 //fr.setInfo_textbox("PointsTextbox", Updates[i][7]);
                                 points = Updates[i][7];
                                 //fr.setInfo_textbox("DirectionTextbox", dir);
@@ -338,6 +352,9 @@ namespace TestXNA.Network_Component
                                 health = Updates[i][5];
                                 // fr.setInfo_textbox("CoinsTextbox", Updates[i][6]);
                                 coins = Updates[i][6];
+                                AI.Direction = map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].getDirection();
+                                AI.playerXcor=Int32.Parse(Updates[i][1])+1;
+                                AI.playerYcor=Int32.Parse(Updates[i][2])+1;
 
                             }
                         }
@@ -395,6 +412,14 @@ namespace TestXNA.Network_Component
                                 if (map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].type != 4)
                                     map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(0);
 
+                            }
+
+                        }
+                        for (int i = 0; i < 10; i++)
+                        {
+                            for (int j = 0; j < 10; j++)
+                            {
+                                AI.AImap[i][j] = map[i][j];
                             }
                         }
                     }).Start();

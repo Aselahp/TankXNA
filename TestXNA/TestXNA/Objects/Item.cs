@@ -52,6 +52,10 @@ namespace TestXNA.Objects
         {
             return Direction;
         }
+        public void Resetuser()
+        {
+            this.user=0;
+        }
     }
     }
 

@@ -275,6 +275,19 @@ namespace TestXNA
                 if (!oldState.IsKeyDown(Keys.Space))
                 {
                     net.massage = "SHOOT#";
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                        {
+                            if (net.map[i][j].type==4 && net.map[i][j].user == 1)
+                            {
+                                net.map[i][j].settype(7);
+                            break;
+                            }
+                        }
+                    }
+
+                        
                 }
             }
           
@@ -368,6 +381,10 @@ namespace TestXNA
                             else if (player.type == 6)
                             {
                                 str = "life";
+                            }
+                            else if (player.type == 7)
+                            {
+                                str = "bullet";
                             }
                             carriageTexture = Content.Load<Texture2D>(str);
                             spriteBatch.Draw(carriageTexture, player.Position, Color.White);

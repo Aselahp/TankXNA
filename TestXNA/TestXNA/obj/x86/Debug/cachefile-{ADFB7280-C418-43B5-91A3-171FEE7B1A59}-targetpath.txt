@@ -6,11 +6,6 @@ Content\brick.xnb
 Content\bullet.xnb
 Content\life.xnb
 Content\water.xnb
-Content\profileicon.xnb
-Content\enemy_down.xnb
-Content\enemy_left.xnb
-Content\enemy_right.xnb
-Content\enemy_up.xnb
 Content\background.xnb
 Content\tank_right.xnb
 Content\tank_up.xnb
@@ -18,4 +13,9 @@ Content\tank_down.xnb
 Content\tank_left.xnb
 Content\blank.xnb
 Content\gamelogo.xnb
+Content\enemy_down.xnb
+Content\enemy_left.xnb
+Content\enemy_right.xnb
+Content\enemy_up.xnb
+Content\profileicon.xnb
 Content\textfont.xnb

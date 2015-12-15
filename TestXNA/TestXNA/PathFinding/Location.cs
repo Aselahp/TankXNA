@@ -30,6 +30,7 @@ namespace TestXNA.PathFinding
         public int playerXcor ;
         public int playerYcor;
         public String massage = null;
+        public String Direction = null;
         
         public Pathfinder() {
             for (int i = 0; i < AImap.Length; i++)
@@ -49,7 +50,7 @@ namespace TestXNA.PathFinding
                 for (int j = 0; j < 10; j++) {     
                 var code=' ';
                 if(AImap[j][i].type == 1 ){
-                    code='b';
+                    code = 'b';
                 }
                 else if (AImap[j][i].type == 2)
                 {
@@ -69,6 +70,7 @@ namespace TestXNA.PathFinding
              mapcomponents[i]=a;
             }
            
+               
             String[] map = new String[]
             {
                 "+----------+",
@@ -89,12 +91,49 @@ namespace TestXNA.PathFinding
                 foreach (var line in map)
                     Console.WriteLine(line);
             
-
+            int x=2,y=2;
+            if (playerXcor == 1 && playerYcor == 1)
+            {
+                Thread.Sleep(5000);
+            }
+            else
+            {
+                Thread.Sleep(1000);
+            }
+                for (int i = 9; i >=0; i--)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        if (AImap[i][j].type == 5)
+                        {
+                            x = i+1;
+                            y = j+1;
+                            break;
+                        }
+                    }
+                }
+                Console.WriteLine("[" + x + "," + y+"]");
+                Console.WriteLine("Player now : "+"[" + playerXcor + "," + playerYcor + "]");
             // algorithm
+                new Thread(() =>
+                {
+                    while (true)
+                    {
+                        if (AImap[x-1][y-1].type==0) {
+                            locke = false;
+                            break;
+                        }
+                        else if (locke == false)
+                        {
+                            break;
+                        }
+                    }
 
+
+                }).Start();
             Location current = null;
             var start = new Location { X = playerXcor, Y = playerYcor };
-            var target = new Location { X = 5, Y = 4};
+            var target = new Location { X = x, Y = y};
             var openList = new List<Location>();
             var closedList = new List<Location>();
             int g = 0;
@@ -189,24 +228,122 @@ namespace TestXNA.PathFinding
                 q++;
                 
             }
-            massage = "RIGHT#";
-           // Console.Write(massage);
-            Thread.Sleep(2000);
+
             
-            for (int i = Xcor.Length-2; i >=0; i--)
-            {
-                Thread.Sleep(2000);
-                if (playerXcor == Xcor[i] && playerYcor == (Ycor[i] - 1)) { massage = "RIGHT#"; }
-                else if (playerXcor == Xcor[i] && playerYcor == (Ycor[i] + 1)) { massage = "LEFT#"; }
-                else if (playerXcor == (Xcor[i] + 1)) { massage = "UP#"; }
-                else if (playerXcor == (Xcor[i] - 1)) { massage = "DOWN#"; }
-                Console.Write(massage);
-                Thread.Sleep(1000);
-                Console.Write("(" + Xcor[i] + "," + Ycor[i] + ")");
-                playerXcor = Xcor[i];
-                playerYcor = Ycor[i];
+                for (int i = Xcor.Length - 2; i >= 0; i--)
+                {
+                    if (locke == true)
+                    {
+                    Thread.Sleep(1500);
+                    if (playerYcor == Ycor[i] && (Xcor[i] - playerXcor) == 1)
+                    {
+                        if (Direction == "North" || Direction == "South")
+                        {
+                            massage = "RIGHT#";
+                            Thread.Sleep(1500);
+                            massage = "RIGHT#";
+
+                        }
+                        else if (Direction == "East")
+                        {
+                            massage = "RIGHT#";
+
+                        }
+                        else if (Direction == "West")
+                        {
+                            massage = "UP#";
+                            Thread.Sleep(1500);
+                            massage = "RIGHT#";
+                            Thread.Sleep(1500);
+                            massage = "RIGHT#";
+
+                        }
+                        Direction = "East";
+                    }
+                    else if (playerYcor == Ycor[i] && (playerXcor - Xcor[i]) == 1)
+                    {
+                        if (Direction == "North" || Direction == "South")
+                        {
+                            massage = "LEFT#";
+                            Thread.Sleep(1500);
+                            massage = "LEFT#";
+                        }
+                        else if (Direction == "West")
+                        {
+                            massage = "LEFT#";
+
+                        }
+                        else if (Direction == "East")
+                        {
+                            massage = "UP#";
+                            Thread.Sleep(1500);
+                            massage = "LEFT#";
+                            Thread.Sleep(1500);
+                            massage = "LEFT#";
+
+                        }
+                        Direction = "West";
+                    }
+                    else if (playerXcor == Xcor[i] && (playerYcor - Ycor[i]) == 1)
+                    {
+                        if (Direction == "East" || Direction == "West")
+                        {
+                            massage = "UP#";
+                            Thread.Sleep(1500);
+                            massage = "UP#";
+                        }
+                        else if (Direction == "North")
+                        {
+                            massage = "UP#";
+
+                        }
+                        else if (Direction == "South")
+                        {
+                            massage = "RIGHT#";
+                            Thread.Sleep(1500);
+                            massage = "UP#";
+                            Thread.Sleep(1500);
+                            massage = "UP#";
+
+                        }
+                        Direction = "North";
+                    }
+                    else if (playerXcor == Xcor[i] && (Ycor[i] - playerYcor) == 1)
+                    {
+                        if (Direction == "East" || Direction == "West")
+                        {
+                            massage = "DOWN#";
+                            Thread.Sleep(1500);
+                            massage = "DOWN#";
+                        }
+                        else if (Direction == "South")
+                        {
+                            massage = "DOWN#";
+
+                        }
+                        else if (Direction == "North")
+                        {
+                            massage = "RIGHT#";
+                            Thread.Sleep(1500);
+                            massage = "DOWN#";
+                            Thread.Sleep(1500);
+                            massage = "DOWN#";
+
+                        }
+                        Direction = "South";
+                    }
+                    playerXcor = Xcor[i];
+                    playerYcor = Ycor[i];
+                    Console.Write("(" + Xcor[i] + "," + Ycor[i] + ")");
+                    
+                }
+                    else
+                    {
+                        break;
+                    }
             }
-            //locke = false;
+            locke = false;
+            Console.WriteLine();
             // end
 
            // Console.ReadLine();
