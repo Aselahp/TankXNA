@@ -49,7 +49,7 @@ namespace TestXNA.PathFinding
                 for (int j = 0; j < 10; j++) {     
                 var code=' ';
                 if(AImap[j][i].type == 1 ){
-                    code='B';
+                    code='b';
                 }
                 else if (AImap[j][i].type == 2)
                 {
@@ -191,17 +191,17 @@ namespace TestXNA.PathFinding
             }
             massage = "RIGHT#";
            // Console.Write(massage);
-            Thread.Sleep(200);
+            Thread.Sleep(2000);
             
             for (int i = Xcor.Length-2; i >=0; i--)
             {
-                Thread.Sleep(200);
-                //if (playerXcor == Xcor[i] && playerYcor == (Ycor[i]-1)) { massage = "RIGHT#"; }
-                //else if (playerXcor == Xcor[i] && playerYcor == (Ycor[i] + 1)) { massage = "LEFT#"; }
-                //else if (playerXcor == (Xcor[i]+1)) { massage = "UP#"; }
-                //else if (playerXcor == (Xcor[i]-1)) { massage = "DOWN#"; }
+                Thread.Sleep(2000);
+                if (playerXcor == Xcor[i] && playerYcor == (Ycor[i] - 1)) { massage = "RIGHT#"; }
+                else if (playerXcor == Xcor[i] && playerYcor == (Ycor[i] + 1)) { massage = "LEFT#"; }
+                else if (playerXcor == (Xcor[i] + 1)) { massage = "UP#"; }
+                else if (playerXcor == (Xcor[i] - 1)) { massage = "DOWN#"; }
                 Console.Write(massage);
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 Console.Write("(" + Xcor[i] + "," + Ycor[i] + ")");
                 playerXcor = Xcor[i];
                 playerYcor = Ycor[i];
