@@ -87,14 +87,7 @@ namespace TestXNA
         /// </summary>
         protected override void LoadContent()
         {
-            /* String stri="brick";
-             // Create a new SpriteBatch, which can be used to draw textures.
-             spriteBatch = new SpriteBatch(GraphicsDevice);
-             back = Content.Load<Texture2D>("post-138925-1233469168");
-             carriageTexture = Content.Load<Texture2D>(stri);
-             screenWidth = graphics.PreferredBackBufferWidth;
-             screenHight = graphics.PreferredBackBufferHeight;
-             SetUpPlayers();*/
+            
             // TODO: use this.Content to load your game content here
             
         }
@@ -124,7 +117,7 @@ namespace TestXNA
             // TODO: Add your update logic here
             //String stri = "brick";
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            back = Content.Load<Texture2D>("background");
+            back = Content.Load<Texture2D>("post-138925-1233469168");
             Font1 = Content.Load<SpriteFont>("textfont");
             logofont = Content.Load<SpriteFont>("textfont");
             FontPos = new Vector2(550,150);
@@ -133,11 +126,8 @@ namespace TestXNA
             Vector2 pos = new Vector2(550, 45);
             pixel = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             pixel.SetData(new[] { Color.White });
-            //carriageTexture = Content.Load<Texture2D>(stri);
             screenWidth = graphics.PreferredBackBufferWidth;
             screenHight = graphics.PreferredBackBufferHeight;
-            //DrawPlayers();
-            //SetUpPlayers();
             Draw(gameTime);
             UpdateInput();
             base.Update(gameTime);
@@ -201,16 +191,7 @@ namespace TestXNA
             spriteBatch.Draw(pixel, new Rectangle(630, 35, thicknessOfBorder, 174), borderColor);
 
             // Draw right line
-           /* spriteBatch.Draw(pixel, new Rectangle((rectangleToDraw.X + rectangleToDraw.Width - thicknessOfBorder),
-                                            rectangleToDraw.Y,
-                                            thicknessOfBorder,
-                                            rectangleToDraw.Height), borderColor);
-            // Draw bottom line
-            spriteBatch.Draw(pixel, new Rectangle(480,
-                                            rectangleToDraw.Y + rectangleToDraw.Height - thicknessOfBorder,
-                                            rectangleToDraw.Width,
-                                            thicknessOfBorder), borderColor);*/
-
+          
         }
         private void DrawprofileBorder(Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor)
         {
@@ -297,15 +278,6 @@ namespace TestXNA
 
         private void DrawPlayers()
         {
-            /* foreach (PlayerData player in players)
-             {
-                 if (player.IsAlive)
-                 {
-                     carriageTexture = Content.Load<Texture2D>("brick");
-                     spriteBatch.Draw(carriageTexture, player.Position, Color.White);
-                 }
-             }*/
-           
             
                 for (int i = 0; i < 10; i++)
                 {

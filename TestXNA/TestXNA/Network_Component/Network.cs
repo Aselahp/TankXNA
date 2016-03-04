@@ -13,16 +13,20 @@ namespace TestXNA.Network_Component
         String[] positions = new String[15];
         public String play = null;
         public Objects.Item[][] map = new Objects.Item[10][];
-        public String health=null;
-        public String coins=null;
-        public String points=null;
-        public String massage = null;
+        public String health;
+        public String coins;
+        public String points;
+        public String massage;
         
         
         public PathFinding.Pathfinder AI;
        
         public Network()
         {
+            this.health = null;
+            this.coins = null;
+            points = null;
+            massage = null;
             for (int i = 0; i < map.Length; i++)
             {
                 map[i] = new Objects.Item[10];
@@ -94,7 +98,7 @@ namespace TestXNA.Network_Component
                             //if (massage.Equals("SHOOT#"))
                            // {
                                 //fr.setInfo_textbox("StatusTextbox", "Shooting...");
-                               // Thread backgroundThread = new Thread(() => setStatusbar(1500));
+                               // Thread backgroundThread = new Thread(() => setStatusbar(1200));
                                // backgroundThread.Start();
                            // }
                             if (net1 != null && conn1 != null)
@@ -178,10 +182,7 @@ namespace TestXNA.Network_Component
                     }
                     for (int p = 0; p < bricks.Length/2; p++)
                     {
-                        //Objects.Item item1 = new Objects.Item();
-                        //item1.settype(l);
-                        //item1.setX_cor(BrickX[p]);
-                       // item1.setX_cor(BrickY[p]);
+                  
                       
                         map[Int32.Parse(BrickX[p])][Int32.Parse(BrickY[p])].settype(l);
 
@@ -191,7 +192,6 @@ namespace TestXNA.Network_Component
                     {
                         //Console.WriteLine(type + " " + (i + 1) + ": " + "X--> " + BrickX[i] + "   Y--> " + BrickY[i]);
                        
-                            //fr.settext(BrickX[i],BrickY[i],type);
                           
                     }
                     
@@ -236,14 +236,23 @@ namespace TestXNA.Network_Component
                 {
                    while (true)
                     {
-                        if (AI.locke == false) {
-                            
+                        if (AI.locke == false && AI.coinpilelock==false) {
+
+                           
                                 AI.set();
                         }
                     }
                         
                     
-                }).Start();}
+                }).Start();
+            
+            
+            
+            
+            
+            
+            }
+
             
             else if (index.Equals('C') && !(msg.Equals("CELL_OCCUPIED")))
             {
@@ -347,10 +356,7 @@ namespace TestXNA.Network_Component
                                 map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].setY_cor(Updates[i][2]);
                                 //fr.setInfo_textbox("PointsTextbox", Updates[i][7]);
                                 points = Updates[i][7];
-                                //fr.setInfo_textbox("DirectionTextbox", dir);
-                                // fr.setInfo_textbox("HealthTextbox", Updates[i][5]);
                                 health = Updates[i][5];
-                                // fr.setInfo_textbox("CoinsTextbox", Updates[i][6]);
                                 coins = Updates[i][6];
                                 AI.Direction = map[Int32.Parse(Updates[i][1])][Int32.Parse(Updates[i][2])].getDirection();
                                 AI.playerXcor=Int32.Parse(Updates[i][1])+1;
@@ -362,7 +368,7 @@ namespace TestXNA.Network_Component
                         {
                             if (positions[i] != null)
                                 map[Int32.Parse(positions[i + 1])][Int32.Parse(positions[i + 2])].settype(4);
-                            //fr.settext(positions[i + 1], positions[i + 2], positions[i]);
+                         
 
                         }
                         parts[parts.Length - 1] = parts[parts.Length - 1].Replace(';', ',');
@@ -390,19 +396,19 @@ namespace TestXNA.Network_Component
                         {
                             if (BricksDamage[i].Equals("1"))
                             {
-                                //fr.settext(BrickX[i], BrickY[i], "Brick 75%");
+                               
                                 map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
 
                             }
                             else if (BricksDamage[i].Equals("2"))
                             {
-                                //fr.settext(BrickX[i], BrickY[i], "Brick 50%");
+                               
                                 map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
 
                             }
                             else if (BricksDamage[i].Equals("3"))
                             {
-                                // fr.settext(BrickX[i], BrickY[i], "Brick 25%");
+                                
                                 map[Int32.Parse(BrickX[i])][Int32.Parse(BrickY[i])].settype(1);
 
                             }
